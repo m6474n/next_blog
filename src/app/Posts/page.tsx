@@ -3,7 +3,7 @@
 import Link from "next/link";
 import prisma from "../../../lib/prisma";
 import Post from "../components/Post";
-export async function getPosts() {
+async function getPosts() {
   const posts = await prisma.post.findMany({
     where: { published: true },
     include: {
