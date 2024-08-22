@@ -1,6 +1,6 @@
 
 
-import AllPosts from "./Posts/page";
+import AllPosts from "./posts/page";
 
 
 export default async function Home() {

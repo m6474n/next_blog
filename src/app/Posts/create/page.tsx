@@ -1,24 +1,30 @@
 
 "use client";
 import React, { useState, FormEvent } from 'react';
-
+import { useRouter } from 'next/navigation';
 const PostForm: React.FC = () => {
   // State hooks to manage form input values
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
-
+  const router = useRouter();
   // Handle form submission
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit =async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
    
     try {
-        fetch('../../api/create_post', {
+      await  fetch('../../api/post/create_post', {
             method: "POST",
             headers: {
                 'Content-Type': 'applicaion/json'
             },
             body: JSON.stringify({title, content})
-        })
+            
+        });
+        router.refresh();
+        
+        router.push('/');
+        
+
     } catch (error) {
         console.log(error)
         
