@@ -23,10 +23,18 @@ async function fetchPost(id: string) {
   }
 }
 
+
+
+
 const Page = () => {
     const router = useRouter();
   const { id } = useParams<{ id: string }>();
   const [post, setPost] = useState<any>(null);
+
+function handleClick(){
+  router.push(`/posts/${id}/update`)
+}
+
 
   useEffect(() => {
     if (id) {
@@ -46,7 +54,7 @@ const Page = () => {
        {/* <h4><strong>Published: </strong>{post.published}</h4> */}
       <pre> <p>Content : {post.content}</p></pre>
       <button onClick={()=>{router.back()}} type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Back</button>
-      <button onClick={()=>{}} type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Edit</button>
+      <button onClick={handleClick} type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Edit</button>
        </div>
        
     // <pre>{JSON.stringify(post, null, 2)}</pre>
